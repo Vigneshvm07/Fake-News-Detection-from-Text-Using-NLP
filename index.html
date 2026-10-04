@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens | Fake News Detection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">
+        Truth<span>Lens</span>
+    </a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#detector">Detector</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <a href="#detector" class="header-btn">
+        Check News →
+    </a>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <span class="pulse"></span>
+                NLP-POWERED NEWS ANALYSIS
+            </div>
+
+            <h1>
+                Separate
+                <span>facts from fiction.</span>
+            </h1>
+
+            <p>
+                Analyze news articles and social media claims using
+                Natural Language Processing techniques to identify
+                suspicious language, clickbait patterns and reliability signals.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#detector" class="primary-btn">
+                    Analyze News →
+                </a>
+
+                <a href="#about" class="secondary-btn">
+                    Learn More
+                </a>
+
+            </div>
+
+            <div class="hero-features">
+                <span>✓ NLP analysis</span>
+                <span>✓ Clickbait detection</span>
+                <span>✓ Confidence scoring</span>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="glow"></div>
+
+            <div class="scanner-circle">
+
+                <div class="shield">
+                    ✓
+                </div>
+
+                <div class="scan-line"></div>
+
+            </div>
+
+            <div class="floating-card card-one">
+
+                <span class="card-icon">🔍</span>
+
+                <div>
+                    <strong>Text analyzed</strong>
+                    <small>NLP processing complete</small>
+                </div>
+
+                <span class="check">✓</span>
+
+            </div>
+
+            <div class="floating-card card-two">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <small>Detection status</small>
+                    <strong>Reliable</strong>
+                </div>
+
+                <span class="score">94%</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DETECTOR -->
+
+    <section class="section detector" id="detector">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                NEWS DETECTOR
+            </span>
+
+            <h2>
+                Verify a news claim
+            </h2>
+
+            <p>
+                Paste a headline, article paragraph, or social media claim.
+            </p>
+
+        </div>
+
+
+        <div class="detector-grid">
+
+            <!-- INPUT -->
+
+            <div class="panel input-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-icon">✎</span>
+                        <strong>News Text</strong>
+                    </div>
+
+                    <span class="ready">
+                        ● READY
+                    </span>
+
+                </div>
+
+                <label for="newsInput">
+                    Enter news content
+                </label>
+
+                <textarea
+                    id="newsInput"
+                    maxlength="5000"
+                    placeholder="Example: Scientists have discovered a revolutionary new technology that will completely eliminate all diseases..."
+                ></textarea>
+
+                <div class="input-footer">
+
+                    <span id="charCount">
+                        0 / 5000
+                    </span>
+
+                    <button id="clearBtn" class="text-btn">
+                        Clear
+                    </button>
+
+                </div>
+
+
+                <div class="examples">
+
+                    <span>Try an example:</span>
+
+                    <button
+                        class="example-btn"
+                        data-example="Scientists at the university published a peer-reviewed study showing that the new treatment reduced symptoms in 72 percent of participants."
+                    >
+                        Reliable
+                    </button>
+
+                    <button
+                        class="example-btn"
+                        data-example="SHOCKING!!! Doctors DON'T want you to know this secret miracle cure! Share this before it gets deleted!"
+                    >
+                        Clickbait
+                    </button>
+
+                    <button
+                        class="example-btn"
+                        data-example="A new city transport policy will begin next Monday according to an official government announcement."
+                    >
+                        Neutral
+                    </button>
+
+                </div>
+
+
+                <button id="analyzeBtn" class="analyze-btn">
+                    ✦ Detect Fake News
+                </button>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <div class="panel result-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-icon">◈</span>
+                        <strong>Detection Result</strong>
+                    </div>
+
+                    <span id="resultStatus" class="result-status">
+                        WAITING
+                    </span>
+
+                </div>
+
+
+                <div class="result-main">
+
+                    <div id="resultIcon" class="result-icon">
+                        ?
+                    </div>
+
+                    <h3 id="resultTitle">
+                        Awaiting analysis
+                    </h3>
+
+                    <p id="resultMessage">
+                        Your news credibility result will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="confidence">
+
+                    <div class="confidence-header">
+
+                        <span>
+                            Detection confidence
+                        </span>
+
+                        <strong id="confidenceValue">
+                            0%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+                        <div id="confidenceBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="classification">
+
+                    <div>
+                        <span class="indicator real"></span>
+                        <span>Real</span>
+                        <strong id="realScore">0%</strong>
+                    </div>
+
+                    <div>
+                        <span class="indicator uncertain"></span>
+                        <span>Uncertain</span>
+                        <strong id="uncertainScore">0%</strong>
+                    </div>
+
+                    <div>
+                        <span class="indicator fake"></span>
+                        <span>Fake</span>
+                        <strong id="fakeScore">0%</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INSIGHTS -->
+
+        <div class="insights-grid">
+
+            <div class="panel insight-panel">
+
+                <div class="panel-header">
+                    <strong>Suspicious Signals</strong>
+                    <span class="insight-icon">⚠</span>
+                </div>
+
+                <div id="signals">
+                    <p class="empty">
+                        Detection signals will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="panel insight-panel">
+
+                <div class="panel-header">
+                    <strong>Detected Keywords</strong>
+                    <span class="insight-icon">⌕</span>
+                </div>
+
+                <div id="keywords" class="keyword-container">
+                    <p class="empty">
+                        Keywords will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="panel insight-panel">
+
+                <div class="panel-header">
+                    <strong>Content Analysis</strong>
+                    <span class="insight-icon">▣</span>
+                </div>
+
+                <div id="contentAnalysis">
+                    <p class="empty">
+                        Content metrics will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section class="section dashboard" id="dashboard">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                ANALYTICS
+            </span>
+
+            <h2>
+                Detection dashboard
+            </h2>
+
+            <p>
+                Overview of your analyzed news content.
+            </p>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    ▤
+                </div>
+
+                <p>
+                    Total Checks
+                </p>
+
+                <h3 id="totalCount">
+                    0
+                </h3>
+
+                <small>
+                    News analyzed
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    ✓
+                </div>
+
+                <p>
+                    Reliable
+                </p>
+
+                <h3 id="realCount">
+                    0
+                </h3>
+
+                <small>
+                    Real content
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon yellow">
+                    ?
+                </div>
+
+                <p>
+                    Uncertain
+                </p>
+
+                <h3 id="uncertainCount">
+                    0
+                </h3>
+
+                <small>
+                    Needs verification
+                </small>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon red">
+                    !
+                </div>
+
+                <p>
+                    Suspicious
+                </p>
+
+                <h3 id="fakeCount">
+                    0
+                </h3>
+
+                <small>
+                    Potential fake news
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="panel chart-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <strong>Detection distribution</strong>
+
+                        <p>
+                            Classification overview
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas id="newsChart"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel history-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <strong>Recent checks</strong>
+
+                        <p>
+                            Latest news analysis
+                        </p>
+                    </div>
+
+                    <button id="clearHistory" class="text-btn">
+                        Clear all
+                    </button>
+
+                </div>
+
+                <div id="historyList">
+
+                    <p class="empty-history">
+                        No news analyzed yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="section about" id="about">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                How fake news detection works
+            </h2>
+
+            <p>
+                NLP techniques can identify linguistic patterns commonly
+                associated with unreliable content.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⌕
+                </div>
+
+                <h3>
+                    Text Preprocessing
+                </h3>
+
+                <p>
+                    The system cleans and tokenizes the submitted
+                    text before performing analysis.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚠
+                </div>
+
+                <h3>
+                    Clickbait Detection
+                </h3>
+
+                <p>
+                    Detects exaggerated phrases, sensational language,
+                    excessive punctuation and urgency.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    Linguistic Analysis
+                </h3>
+
+                <p>
+                    Examines wording, emotional language, certainty
+                    and suspicious claims.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Classification
+                </h3>
+
+                <p>
+                    Combines detected signals to estimate whether
+                    content appears reliable, uncertain or suspicious.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="workflow">
+
+            <h3>
+                System workflow
+            </h3>
+
+            <div class="workflow-steps">
+
+                <div class="workflow-step">
+
+                    <span>01</span>
+
+                    <strong>
+                        News Input
+                    </strong>
+
+                    <small>
+                        Article or claim
+                    </small>
+
+                </div>
+
+                <i>→</i>
+
+                <div class="workflow-step">
+
+                    <span>02</span>
+
+                    <strong>
+                        Preprocessing
+                    </strong>
+
+                    <small>
+                        Clean text
+                    </small>
+
+                </div>
+
+                <i>→</i>
+
+                <div class="workflow-step">
+
+                    <span>03</span>
+
+                    <strong>
+                        NLP Analysis
+                    </strong>
+
+                    <small>
+                        Extract signals
+                    </small>
+
+                </div>
+
+                <i>→</i>
+
+                <div class="workflow-step">
+
+                    <span>04</span>
+
+                    <strong>
+                        Classification
+                    </strong>
+
+                    <small>
+                        Generate result
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <a href="#home" class="logo">
+        Truth<span>Lens</span>
+    </a>
+
+    <p>
+        Fake News Detection from Text Using NLP
+    </p>
+
+    <small>
+        TSA Academic Project · 2026
+    </small>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
